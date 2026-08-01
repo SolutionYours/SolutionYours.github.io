@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SolutionYours — Official Apps & Links</title>
-    <meta name="description" content="SolutionYours — Innovative AI-powered apps for everyone.">
+    <title>SolutionYours — Solo Indie iOS Developer</title>
+    <meta name="description" content="Official portfolio of SolutionYours. Building innovative, AI-powered iOS mobile apps as a solo developer.">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,6 +19,7 @@
     <canvas id="stars"></canvas>
 
     <div class="container">
+        <!-- Profile Header -->
         <header class="profile">
             <div class="avatar-wrapper">
                 <img id="logo-img" src="logo.png" alt="SolutionYours Logo" class="avatar-img"
@@ -23,45 +27,86 @@
                 <div id="logo-fallback" class="logo-fallback">SY</div>
                 <div class="pulse-ring"></div>
             </div>
+            
             <h1 class="brand-title" id="brand-name"></h1>
-            <p class="brand-tagline" id="brand-tagline"></p>
+            <p class="brand-role" id="brand-role"></p>
             <div class="badge" id="brand-badge"></div>
+            
+            <!-- Solo Dev Bio Box -->
+            <div class="bio-box">
+                <p id="brand-bio"></p>
+            </div>
         </header>
 
-        <main class="links-list" id="links-container"></main>
+        <!-- Apps Grid Section -->
+        <section class="section-container">
+            <h2 class="section-title">My Apps</h2>
+            <div class="apps-grid" id="apps-container"></div>
+        </section>
 
+        <!-- Social Media Footer Connections -->
+        <section class="section-container">
+            <h2 class="section-title">Connect With Me</h2>
+            <div class="social-row" id="socials-container"></div>
+        </section>
+
+        <!-- Footer -->
         <footer class="footer">
-            <p>© 2026 SolutionYours • All rights reserved.</p>
+            <p>© 2026 SolutionYours • Crafted solo with passion.</p>
         </footer>
     </div>
 
     <script src="links.js"></script>
     <script>
-        // Sayfayı config'den otomatik oluştur
-        document.getElementById('brand-name').textContent = CONFIG.name;
-        document.getElementById('brand-tagline').textContent = CONFIG.tagline;
+        // Load configurations
+        document.getElementById('brand-name').textContent = CONFIG.developerName;
+        document.getElementById('brand-role').textContent = CONFIG.role;
         document.getElementById('brand-badge').textContent = CONFIG.badge;
+        document.getElementById('brand-bio').textContent = CONFIG.bio;
         document.getElementById('logo-img').src = CONFIG.logo;
 
-        const container = document.getElementById('links-container');
-        CONFIG.links.forEach(link => {
-            const a = document.createElement('a');
-            a.href = link.url;
-            a.target = '_blank';
-            a.rel = 'noopener';
-            a.className = 'link-card' + (link.featured ? ' featured' : '');
-            a.innerHTML = `
-                <div class="link-icon">${link.icon}</div>
-                <div class="link-content">
-                    <span class="link-title">${link.title}</span>
-                    <span class="link-subtitle">${link.subtitle}</span>
+        // Render Apps
+        const appsContainer = document.getElementById('apps-container');
+        CONFIG.apps.forEach(app => {
+            const card = document.createElement(app.isLive ? 'a' : 'div');
+            if (app.isLive) {
+                card.href = app.url;
+                card.target = '_blank';
+                card.rel = 'noopener';
+            }
+            card.className = 'app-card' + (app.isLive ? ' live' : ' dev');
+            
+            const badgeClass = app.isLive ? 'status-live' : 'status-dev';
+            
+            card.innerHTML = `
+                <div class="app-card-header">
+                    <span class="app-icon">${app.icon}</span>
+                    <span class="app-status-badge ${badgeClass}">${app.status}</span>
                 </div>
-                <div class="link-arrow">→</div>
+                <h3 class="app-title">${app.title}</h3>
+                <span class="app-subtitle">${app.subtitle}</span>
+                <p class="app-description">${app.description}</p>
+                ${app.isLive ? '<div class="app-action">View on App Store →</div>' : ''}
             `;
-            container.appendChild(a);
+            appsContainer.appendChild(card);
         });
 
-        // Yıldız animasyonu (Logo ile uyumlu)
+        // Render Socials
+        const socialsContainer = document.getElementById('socials-container');
+        CONFIG.socials.forEach(social => {
+            const a = document.createElement('a');
+            a.href = social.url;
+            a.target = '_blank';
+            a.rel = 'noopener';
+            a.className = 'social-btn';
+            a.innerHTML = `
+                <span class="social-icon">${social.icon}</span>
+                <span class="social-name">${social.platform}</span>
+            `;
+            socialsContainer.appendChild(a);
+        });
+
+        // Star animation
         const canvas = document.getElementById('stars');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
@@ -71,6 +116,11 @@
         canvas.style.left = '0';
         canvas.style.zIndex = '0';
         canvas.style.pointerEvents = 'none';
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
 
         const stars = Array.from({ length: 60 }, () => ({
             x: Math.random() * canvas.width,

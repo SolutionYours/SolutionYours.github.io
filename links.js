@@ -1,86 +1,101 @@
 // =====================================================
-//  SolutionYours — Link Sayfası Konfigürasyonu
-//  Yeni link eklemek için buraya bir satır ekleyin!
+//  SolutionYours — Solo Developer Portfolio Config
 // =====================================================
 
 const CONFIG = {
-    // 🏢 Şirket Bilgileri
-    name: "SolutionYours",
-    tagline: "Innovative AI-powered apps for everyone 🚀",
-    logo: "logo.png",  // ← Bu klasöre logo.png olarak kaydedin
-    badge: "✨ Building AI apps that matter",
-
-    // 🔗 Tüm Linkler — Yeni eklemek için { } bloğunu kopyalayıp aşağıya yapıştırın
-    links: [
-        // ── UYGULAMALAR ──────────────────────────────────
+    // 👤 Developer Information
+    developerName: "SolutionYours",
+    role: "Solo Indie iOS Developer",
+    bio: "Hi, I'm the creator behind SolutionYours. I design, code, and launch AI-powered mobile experiences as a solo indie developer. Every app here is crafted with care from scratch.",
+    logo: "logo.png",
+    badge: "🚀 100% Solo Projects",
+    
+    // 🌟 Apps List (Live & In Development)
+    apps: [
         {
+            title: "AnimAI",
+            subtitle: "AI Pet Voice & Aura",
+            description: "Ever wondered what your pet is really thinking? Discover their secret AI aura card, personality traits, and get hilariously sarcastic roasts.",
             icon: "🐾",
-            title: "AnimAI: AI Pet Voice & Aura",
-            subtitle: "Discover your pet's inner mind • iOS",
             url: "https://apps.apple.com/app/animai-ai-pet-voice-aura/id6763732084",
-            featured: true   // Öne çıkan kart (altın çerçeve)
+            status: "Live on App Store",
+            isLive: true
         },
         {
-            icon: "✍️",
             title: "PostRexAI",
-            subtitle: "AI-powered social media posts • iOS",
+            subtitle: "AI-Powered Social Media",
+            description: "Elevate your social media game. Automatically craft, schedule, and optimize engaging posts with advanced AI helpers.",
+            icon: "✍️",
             url: "https://apps.apple.com/app/postrexai/id6772724565",
-            featured: false
+            status: "Live on App Store",
+            isLive: true
         },
         {
+            title: "FieldReport AI",
+            subtitle: "Smart Inspection Reports",
+            description: "Create professional field inspection reports instantly. Use AI to scan photos, write findings, and export PDFs on the go.",
             icon: "🔍",
-            title: "FieldReport AI: Inspection",
-            subtitle: "AI inspection reports on the go • iOS",
             url: "https://apps.apple.com/app/fieldreport-ai-inspection/id6792279397",
-            featured: false
+            status: "Live on App Store",
+            isLive: true
         },
         {
+            title: "ListBasketAI",
+            subtitle: "Smart Lists & Tasks",
+            description: "Organize your shopping, routines, and daily tasks. AI dynamically categorizes your lists and suggests optimal items.",
             icon: "🛒",
-            title: "ListBasketAI: Smart Lists",
-            subtitle: "AI-powered shopping & task lists • iOS",
             url: "https://apps.apple.com/app/listbasketai-smart-lists/id6752133457",
-            featured: false
+            status: "Live on App Store",
+            isLive: true
         },
-
-        // Buraya yeni uygulama ekleyin:
-        // {
-        //     icon: "📱",
-        //     title: "YENİ UYGULAMA ADI",
-        //     subtitle: "Açıklama • iOS",
-        //     url: "https://apps.apple.com/app/...",
-        //     featured: false
-        // },
-
-        // ── SOSYAL MEDYA ─────────────────────────────────
         {
-            icon: "🎵",
-            title: "TikTok — @solutionyours",
-            subtitle: "Watch viral app demos & reviews",
+            title: "PhotoEnhancer AI",
+            subtitle: "Pro Photo Restorer",
+            description: "Bring old, blurry, or low-resolution photos back to life instantly using state-of-the-art on-device AI algorithms.",
+            icon: "🖼️",
+            url: "#",
+            status: "In Development",
+            isLive: false
+        },
+        {
+            title: "SartoriAI",
+            subtitle: "Cognitive Companion",
+            description: "A tailored AI thinking partner designed to help you brainstorm, journal, and organize complex ideas cleanly.",
+            icon: "🧠",
+            url: "#",
+            status: "In Development",
+            isLive: false
+        },
+        {
+            title: "Warranty Tracker",
+            subtitle: "Smart Warranty Manager",
+            description: "Scan receipts, track expiration dates, and get smart notifications before your warranties expire. Never lose a receipt again.",
+            icon: "📋",
+            url: "#",
+            status: "In Development",
+            isLive: false
+        }
+    ],
+
+    // 🔗 Social Media & Contact Links
+    socials: [
+        {
+            platform: "TikTok",
+            handle: "@solutionyours",
             url: "https://tiktok.com/@solutionyours",
-            featured: false
+            icon: "🎵"
         },
         {
-            icon: "📸",
-            title: "Instagram — @solution_yours",
-            subtitle: "Behind-the-scenes & app updates",
+            platform: "Instagram",
+            handle: "@solution_yours",
             url: "https://instagram.com/solution_yours",
-            featured: false
+            icon: "📸"
         },
         {
-            icon: "𝕏",
-            title: "X (Twitter) — @sy_sdy",
-            subtitle: "Latest news & release announcements",
+            platform: "X (Twitter)",
+            handle: "@sy_sdy",
             url: "https://x.com/sy_sdy",
-            featured: false
-        },
-
-        // Buraya yeni sosyal medya ekleyin:
-        // {
-        //     icon: "▶️",
-        //     title: "YouTube",
-        //     subtitle: "App tutorials & demos",
-        //     url: "https://youtube.com/@...",
-        //     featured: false
-        // },
+            icon: "𝕏"
+        }
     ]
 };
