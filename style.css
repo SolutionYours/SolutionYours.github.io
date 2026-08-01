@@ -292,11 +292,75 @@ body {
     color: var(--text-primary);
 }
 
+/* Custom Solutions Card */
+.custom-solutions-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 28px;
+    background: linear-gradient(135deg, rgba(75, 159, 255, 0.12), rgba(155, 77, 202, 0.12));
+    border: 1.5px dashed rgba(75, 159, 255, 0.4);
+    border-radius: 24px;
+    box-shadow: 0 4px 25px rgba(75, 159, 255, 0.08);
+}
+
+@media (min-width: 580px) {
+    .custom-solutions-card {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+.solutions-content {
+    flex: 1;
+}
+
+.solutions-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+    color: var(--text-primary);
+}
+
+.solutions-desc {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.solutions-btn {
+    display: inline-block;
+    padding: 14px 28px;
+    background: var(--blue);
+    color: #000;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 800;
+    border-radius: 14px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(75, 159, 255, 0.3);
+}
+
+.solutions-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(75, 159, 255, 0.5);
+    background: #FFF;
+}
+
 /* Social Row */
 .social-row {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
+}
+
+@media (min-width: 480px) {
+    .social-row {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
 .social-btn {
@@ -320,6 +384,11 @@ body {
     background: rgba(20, 28, 55, 0.8);
 }
 
+.mail-btn {
+    border-color: rgba(75, 159, 255, 0.25);
+    background: rgba(75, 159, 255, 0.05);
+}
+
 .social-icon {
     font-size: 1.25rem;
 }
@@ -327,12 +396,6 @@ body {
 .social-name {
     font-size: 0.88rem;
     font-weight: 600;
-}
-
-@media (max-width: 480px) {
-    .social-name {
-        display: none;
-    }
 }
 
 /* Footer */

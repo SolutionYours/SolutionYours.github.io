@@ -10,6 +10,16 @@ const CONFIG = {
     logo: "logo.png",
     badge: "🚀 100% Solo Projects",
     
+    // ✉️ Contact Information
+    email: "solutionyoursgroup@gmail.com",
+    
+    // 🛠️ Freelance & Custom Solutions Card Info
+    customSolutions: {
+        title: "Looking for Custom Solutions?",
+        description: "Need a custom mobile app, AI integration, or a unique software solution to solve your specific problems? I'm available for freelance projects and custom development.",
+        buttonText: "Get in Touch ✉️"
+    },
+
     // 🌟 Apps List (Live & In Development)
     apps: [
         {

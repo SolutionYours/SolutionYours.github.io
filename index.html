@@ -44,6 +44,18 @@
             <div class="apps-grid" id="apps-container"></div>
         </section>
 
+        <!-- Custom Solutions / Hire Me Box -->
+        <section class="section-container">
+            <h2 class="section-title">Services</h2>
+            <div class="custom-solutions-card" id="solutions-card">
+                <div class="solutions-content">
+                    <h3 id="solutions-title" class="solutions-title"></h3>
+                    <p id="solutions-desc" class="solutions-desc"></p>
+                </div>
+                <a id="solutions-btn" class="solutions-btn" href=""></a>
+            </div>
+        </section>
+
         <!-- Social Media Footer Connections -->
         <section class="section-container">
             <h2 class="section-title">Connect With Me</h2>
@@ -64,6 +76,13 @@
         document.getElementById('brand-badge').textContent = CONFIG.badge;
         document.getElementById('brand-bio').textContent = CONFIG.bio;
         document.getElementById('logo-img').src = CONFIG.logo;
+
+        // Custom Solutions
+        document.getElementById('solutions-title').textContent = CONFIG.customSolutions.title;
+        document.getElementById('solutions-desc').textContent = CONFIG.customSolutions.description;
+        const solBtn = document.getElementById('solutions-btn');
+        solBtn.textContent = CONFIG.customSolutions.buttonText;
+        solBtn.href = `mailto:${CONFIG.email}?subject=Custom%20Software%20Inquiry%20-%20SolutionYours`;
 
         // Render Apps
         const appsContainer = document.getElementById('apps-container');
@@ -91,8 +110,19 @@
             appsContainer.appendChild(card);
         });
 
-        // Render Socials
+        // Render Socials + Email
         const socialsContainer = document.getElementById('socials-container');
+        
+        // Add direct Email button
+        const mailA = document.createElement('a');
+        mailA.href = `mailto:${CONFIG.email}`;
+        mailA.className = 'social-btn mail-btn';
+        mailA.innerHTML = `
+            <span class="social-icon">✉️</span>
+            <span class="social-name">Email</span>
+        `;
+        socialsContainer.appendChild(mailA);
+
         CONFIG.socials.forEach(social => {
             const a = document.createElement('a');
             a.href = social.url;
