@@ -7,7 +7,7 @@ const CONFIG = {
     // 🏢 Şirket Bilgileri
     name: "SolutionYours",
     tagline: "Innovative AI-powered apps for everyone 🚀",
-    logo: "logo.png",  // Logo dosyanızı buraya koyun (logo.png)
+    logo: "logo.png",  // ← Bu klasöre logo.png olarak kaydedin
     badge: "✨ Building AI apps that matter",
 
     // 🔗 Tüm Linkler — Yeni eklemek için { } bloğunu kopyalayıp aşağıya yapıştırın
@@ -54,23 +54,23 @@ const CONFIG = {
         // ── SOSYAL MEDYA ─────────────────────────────────
         {
             icon: "🎵",
-            title: "TikTok",
+            title: "TikTok — @solutionyours",
             subtitle: "Watch viral app demos & reviews",
-            url: "https://tiktok.com/@KULLANICI_ADINIZ",
+            url: "https://tiktok.com/@solutionyours",
             featured: false
         },
         {
             icon: "📸",
-            title: "Instagram",
+            title: "Instagram — @solution_yours",
             subtitle: "Behind-the-scenes & app updates",
-            url: "https://instagram.com/KULLANICI_ADINIZ",
+            url: "https://instagram.com/solution_yours",
             featured: false
         },
         {
             icon: "𝕏",
-            title: "X (Twitter)",
+            title: "X (Twitter) — @sy_sdy",
             subtitle: "Latest news & release announcements",
-            url: "https://x.com/KULLANICI_ADINIZ",
+            url: "https://x.com/sy_sdy",
             featured: false
         },
 
