@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AnimAI — AI Pet Voice & Aura | Official Links</title>
-    <meta name="description" content="Discover your pet's inner monologue, secret AI aura card & rarity level with AnimAI!">
+    <title>SolutionYours — Official Apps & Links</title>
+    <meta name="description" content="SolutionYours — Innovative AI-powered apps for everyone.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -13,107 +13,86 @@
 <body>
     <div class="background-glow bg-glow-1"></div>
     <div class="background-glow bg-glow-2"></div>
+    <canvas id="stars"></canvas>
 
     <div class="container">
         <header class="profile">
             <div class="avatar-wrapper">
-                <img src="mascot.png" alt="AnimAI Axolotl Mascot" class="avatar-img">
+                <img id="logo-img" src="logo.png" alt="SolutionYours Logo" class="avatar-img"
+                     onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex'">
+                <div id="logo-fallback" class="logo-fallback">SY</div>
                 <div class="pulse-ring"></div>
             </div>
-            <h1 class="brand-title">Anim<span class="highlight">AI</span></h1>
-            <p class="brand-tagline">Discover your pet's inner mind & AI aura 🐾</p>
-            <div class="badge">❤️ Every Pro scan feeds stray pets</div>
+            <h1 class="brand-title" id="brand-name"></h1>
+            <p class="brand-tagline" id="brand-tagline"></p>
+            <div class="badge" id="brand-badge"></div>
         </header>
 
-        <main class="links-list">
-
-            <!-- 🌟 AnimAI App Store (Öne Çıkan) -->
-            <a href="https://apps.apple.com/app/animai-ai-pet-voice-aura/id6763732084" target="_blank" rel="noopener" class="link-card featured">
-                <div class="link-icon">🐾</div>
-                <div class="link-content">
-                    <span class="link-title">AnimAI: AI Pet Voice & Aura</span>
-                    <span class="link-subtitle">Discover your pet's inner mind • iOS</span>
-                </div>
-                <div class="link-arrow">→</div>
-            </a>
-
-            <!-- PostRexAI -->
-            <a href="https://apps.apple.com/app/postrexai/id6772724565" target="_blank" rel="noopener" class="link-card">
-                <div class="link-icon">✍️</div>
-                <div class="link-content">
-                    <span class="link-title">PostRexAI</span>
-                    <span class="link-subtitle">AI-powered social media posts • iOS</span>
-                </div>
-                <div class="link-arrow">→</div>
-            </a>
-
-            <!-- FieldReport AI -->
-            <a href="https://apps.apple.com/app/fieldreport-ai-inspection/id6792279397" target="_blank" rel="noopener" class="link-card">
-                <div class="link-icon">🔍</div>
-                <div class="link-content">
-                    <span class="link-title">FieldReport AI: Inspection</span>
-                    <span class="link-subtitle">AI inspection reports on the go • iOS</span>
-                </div>
-                <div class="link-arrow">→</div>
-            </a>
-
-            <!-- ListBasketAI -->
-            <a href="https://apps.apple.com/app/listbasketai-smart-lists/id6752133457" target="_blank" rel="noopener" class="link-card">
-                <div class="link-icon">🛒</div>
-                <div class="link-content">
-                    <span class="link-title">ListBasketAI: Smart Lists</span>
-                    <span class="link-subtitle">AI-powered shopping & task lists • iOS</span>
-                </div>
-                <div class="link-arrow">→</div>
-            </a>
-
-            <!-- 🎵 TikTok -->
-            <a href="https://tiktok.com/@KULLANICI_ADINIZ" target="_blank" rel="noopener" class="link-card">
-                <div class="link-icon">🎵</div>
-                <div class="link-content">
-                    <span class="link-title">TikTok</span>
-                    <span class="link-subtitle">Watch viral pet aura scans</span>
-                </div>
-                <div class="link-arrow">→</div>
-            </a>
-
-            <!-- 📸 Instagram -->
-            <a href="https://instagram.com/KULLANICI_ADINIZ" target="_blank" rel="noopener" class="link-card">
-                <div class="link-icon">📸</div>
-                <div class="link-content">
-                    <span class="link-title">Instagram</span>
-                    <span class="link-subtitle">Community posts & daily pet roasts</span>
-                </div>
-                <div class="link-arrow">→</div>
-            </a>
-
-            <!-- 𝕏 Twitter / X -->
-            <a href="https://x.com/KULLANICI_ADINIZ" target="_blank" rel="noopener" class="link-card">
-                <div class="link-icon">𝕏</div>
-                <div class="link-content">
-                    <span class="link-title">X (Twitter)</span>
-                    <span class="link-subtitle">Latest updates & release news</span>
-                </div>
-                <div class="link-arrow">→</div>
-            </a>
-
-            <!-- Yeni uygulamalar için buraya ekleyin: -->
-            <!-- 
-            <a href="APP_STORE_LINK" target="_blank" rel="noopener" class="link-card">
-                <div class="link-icon">📱</div>
-                <div class="link-content">
-                    <span class="link-title">UYGULAMA ADI</span>
-                    <span class="link-subtitle">Açıklama</span>
-                </div>
-                <div class="link-arrow">→</div>
-            </a>
-            -->
-
-        </main>
+        <main class="links-list" id="links-container"></main>
 
         <footer class="footer">
-            <p>© 2026 AnimAI • All rights reserved.</p>
+            <p>© 2026 SolutionYours • All rights reserved.</p>
         </footer>
     </div>
+
+    <script src="links.js"></script>
+    <script>
+        // Sayfayı config'den otomatik oluştur
+        document.getElementById('brand-name').textContent = CONFIG.name;
+        document.getElementById('brand-tagline').textContent = CONFIG.tagline;
+        document.getElementById('brand-badge').textContent = CONFIG.badge;
+        document.getElementById('logo-img').src = CONFIG.logo;
+
+        const container = document.getElementById('links-container');
+        CONFIG.links.forEach(link => {
+            const a = document.createElement('a');
+            a.href = link.url;
+            a.target = '_blank';
+            a.rel = 'noopener';
+            a.className = 'link-card' + (link.featured ? ' featured' : '');
+            a.innerHTML = `
+                <div class="link-icon">${link.icon}</div>
+                <div class="link-content">
+                    <span class="link-title">${link.title}</span>
+                    <span class="link-subtitle">${link.subtitle}</span>
+                </div>
+                <div class="link-arrow">→</div>
+            `;
+            container.appendChild(a);
+        });
+
+        // Yıldız animasyonu (Logo ile uyumlu)
+        const canvas = document.getElementById('stars');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        canvas.style.position = 'fixed';
+        canvas.style.top = '0';
+        canvas.style.left = '0';
+        canvas.style.zIndex = '0';
+        canvas.style.pointerEvents = 'none';
+
+        const stars = Array.from({ length: 60 }, () => ({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            r: Math.random() * 1.5 + 0.5,
+            o: Math.random(),
+            s: Math.random() * 0.005 + 0.002
+        }));
+
+        function drawStars() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            stars.forEach(star => {
+                star.o += star.s;
+                if (star.o > 1 || star.o < 0) star.s *= -1;
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(140, 180, 255, ${star.o * 0.6})`;
+                ctx.fill();
+            });
+            requestAnimationFrame(drawStars);
+        }
+        drawStars();
+    </script>
 </body>
 </html>
