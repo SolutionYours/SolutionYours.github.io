@@ -265,6 +265,45 @@
 </section>
 
 <script>
+
+// PIN Gate Protection for Admin
+window.addEventListener('DOMContentLoaded', () => {
+  const savedPin = localStorage.getItem('sy_admin_pin') || '1923';
+  let auth = sessionStorage.getItem('sy_admin_auth');
+  if (!auth) {
+    const overlay = document.createElement('div');
+    overlay.id = 'pin-gate';
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(8,8,11,0.98);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;';
+    overlay.innerHTML = `
+      <div style="background:var(--card);border:1px solid var(--line);border-radius:20px;padding:36px;max-width:380px;width:100%;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,0.8);">
+        <img src="../assets/logo.png" width="48" height="48" style="border-radius:12px;margin-bottom:14px;" alt="Logo">
+        <h3 style="margin:0 0 6px;font-size:1.3rem;">Yönetici Girişi</h3>
+        <p style="color:var(--muted);font-size:0.85rem;margin-bottom:20px;">Yönetim paneline erişmek için PIN kodunuzu girin.</p>
+        <input type="password" id="pin-input" placeholder="••••" maxlength="8" style="width:100%;text-align:center;font-size:1.4rem;letter-spacing:6px;background:var(--bg-soft);border:1px solid var(--line);color:var(--text);border-radius:12px;padding:12px;margin-bottom:16px;">
+        <button id="pin-submit" class="btn btn-primary" style="width:100%;padding:12px;font-size:0.95rem;">Giriş Yap</button>
+        <div id="pin-err" style="color:#FF3D00;font-size:0.85rem;margin-top:10px;display:none;">Hatalı PIN kodu!</div>
+        <p style="color:var(--muted-2);font-size:0.75rem;margin-top:16px;">(Varsayılan PIN: 1923 — panelden değiştirebilirsiniz)</p>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+    
+    function checkPin() {
+      const entered = document.getElementById('pin-input').value;
+      if (entered === savedPin) {
+        sessionStorage.setItem('sy_admin_auth', 'true');
+        overlay.remove();
+      } else {
+        document.getElementById('pin-err').style.display = 'block';
+      }
+    }
+    
+    document.getElementById('pin-submit').onclick = checkPin;
+    document.getElementById('pin-input').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') checkPin();
+    });
+  }
+});
+
 function switchTab(tab) {
   ['write', 'posts', 'apps', 'settings'].forEach(t => {
     const el = document.getElementById('tab-' + t);
@@ -369,14 +408,14 @@ function downloadDataJSON() {
           <h4>Studio</h4>
                     <a href="../blog/">Blog</a>
           <a href="../about/">About</a>
-          <a href="mailto:solutionyoursgroup@gmail.com">Contact</a>
+          <a href="mailto:contact@solutionyours.com">Contact</a>
         </div>
         <div class="foot-col">
           <h4>Connect</h4>
           <a href="https://x.com/sy_sdy" target="_blank" rel="noopener">X (Twitter)</a>
           <a href="https://tiktok.com/@solutionyours" target="_blank" rel="noopener">TikTok</a>
           <a href="https://instagram.com/solution_yours" target="_blank" rel="noopener">Instagram</a>
-          <a href="mailto:solutionyoursgroup@gmail.com">Email</a>
+          <a href="mailto:contact@solutionyours.com">Email</a>
         </div>
         <div class="foot-col">
           <h4>Legal</h4>
