@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yönetim Paneli — SolutionYours</title>
+<meta name="description" content="SolutionYours Admin &amp; İçerik Yönetim Paneli">
+<link rel="canonical" href="https://solutionyours.com/admin/">
+<meta name="theme-color" content="#08080b">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SolutionYours">
+<meta property="og:title" content="Yönetim Paneli — SolutionYours">
+<meta property="og:description" content="SolutionYours Admin &amp; İçerik Yönetim Paneli">
+<meta property="og:url" content="https://solutionyours.com/admin/">
+
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/apps/animai-icon.png">
+<link rel="stylesheet" href="../assets/style.css">
+
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../">
+      <img class="brand-img" src="../assets/logo.png" alt="SolutionYours">
+      <span>SolutionYours</span>
+    </a>
+    <nav class="nav">
+      <a href="../apps/">Apps</a>
+      <a href="../blog/">Blog</a>
+      <a href="../about/">About</a>
+      <a href="../legal/support/">Support</a>
+      <a class="nav-cta" href="../admin/">Admin ⚙️</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="wrap" style="padding:40px 22px 80px; max-width:1040px">
+  <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px; margin-bottom:34px; padding-bottom:22px; border-bottom:1px solid var(--line)">
+    <div>
+      <p class="eyebrow" style="margin-bottom:6px">Yönetim Paneli</p>
+      <h1 style="font-size:2.2rem; margin:0">SolutionYours <span>Admin</span></h1>
+      <p style="color:var(--muted); font-size:0.95rem; margin-top:4px">Blog yazılarını ve site içeriklerini yönetin.</p>
+    </div>
+    <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap">
+      <a href="../" class="btn btn-ghost" style="padding:8px 16px; font-size:0.85rem">← Siteyi Görüntüle</a>
+      <a href="https://dash.cloudflare.com" target="_blank" rel="noopener" class="btn btn-primary" style="padding:8px 16px; font-size:0.85rem">Cloudflare Panel ↗</a>
+    </div>
+  </div>
+
+  <!-- Quick Stats -->
+  <div class="stat-row" style="margin-bottom:36px; max-width:100%">
+    <div class="stat" style="background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px">
+      <b>5</b>
+      <span>Yayındaki Uygulama</span>
+    </div>
+    <div class="stat" style="background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px">
+      <b>2</b>
+      <span>Yayınlanmış Yazı</span>
+    </div>
+    <div class="stat" style="background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px">
+      <b>4</b>
+      <span>Geliştirme Aşamasında</span>
+    </div>
+    <div class="stat" style="background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px">
+      <b style="color:#00E676">Canlı</b>
+      <span>Cloudflare Pages</span>
+    </div>
+  </div>
+
+  <!-- Admin Tabs -->
+  <div style="display:flex; gap:10px; border-bottom:1px solid var(--line); margin-bottom:28px; overflow-x:auto; padding-bottom:8px">
+    <button id="tab-btn-write" onclick="switchTab('write')" class="btn btn-primary" style="padding:9px 20px; font-size:0.9rem">✍️ Yeni Blog Yazısı</button>
+    <button id="tab-btn-posts" onclick="switchTab('posts')" class="btn btn-ghost" style="padding:9px 20px; font-size:0.9rem">📚 Mevcut Yazılar (2)</button>
+    <button id="tab-btn-apps" onclick="switchTab('apps')" class="btn btn-ghost" style="padding:9px 20px; font-size:0.9rem">📱 Uygulamalar (5)</button>
+    <button id="tab-btn-settings" onclick="switchTab('settings')" class="btn btn-ghost" style="padding:9px 20px; font-size:0.9rem">⚙️ Yayınlama Ayarları</button>
+  </div>
+
+  <!-- TAB 1: WRITE POST -->
+  <div id="tab-write">
+    <div style="display:grid; grid-template-columns:1fr; gap:30px">
+      <div style="background:var(--card); border:1px solid var(--line); border-radius:18px; padding:28px">
+        <h2 style="font-size:1.35rem; margin-bottom:20px; color:var(--text)">Yeni Yazı Oluştur</h2>
+        
+        <div style="display:flex; flex-direction:column; gap:18px">
+          <div>
+            <label style="display:block; font-size:0.85rem; font-weight:600; color:var(--muted); margin-bottom:6px">Yazı Başlığı</label>
+            <input type="text" id="post-title" placeholder="Örn: iOS 18 ile Siri Entegrasyonu Nasıl Yapılır?" style="width:100%; background:var(--bg-soft); border:1px solid var(--line); color:var(--text); border-radius:10px; padding:12px 14px; font-size:1rem" oninput="autoSlug()">
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px">
+            <div>
+              <label style="display:block; font-size:0.85rem; font-weight:600; color:var(--muted); margin-bottom:6px">Kategori / Etiket</label>
+              <input type="text" id="post-tag" placeholder="Örn: iOS Geliştirme, Yapay Zeka" style="width:100%; background:var(--bg-soft); border:1px solid var(--line); color:var(--text); border-radius:10px; padding:12px 14px; font-size:0.95rem">
+            </div>
+            <div>
+              <label style="display:block; font-size:0.85rem; font-weight:600; color:var(--muted); margin-bottom:6px">Okuma Süresi</label>
+              <input type="text" id="post-time" placeholder="Örn: 4 dk okuma" style="width:100%; background:var(--bg-soft); border:1px solid var(--line); color:var(--text); border-radius:10px; padding:12px 14px; font-size:0.95rem">
+            </div>
+          </div>
+
+          <div>
+            <label style="display:block; font-size:0.85rem; font-weight:600; color:var(--muted); margin-bottom:6px">URL Slug (Otomatik)</label>
+            <input type="text" id="post-slug" placeholder="ios-18-siri-entegrasyonu" style="width:100%; background:var(--bg-soft); border:1px solid var(--line); color:var(--muted); border-radius:10px; padding:10px 14px; font-size:0.9rem">
+          </div>
+
+          <div>
+            <label style="display:block; font-size:0.85rem; font-weight:600; color:var(--muted); margin-bottom:6px">Kısa Özet (Listede görünecek açıklama)</label>
+            <textarea id="post-excerpt" rows="2" placeholder="Yazının 1-2 cümlelik kısa özeti..." style="width:100%; background:var(--bg-soft); border:1px solid var(--line); color:var(--text); border-radius:10px; padding:12px 14px; font-size:0.95rem; font-family:inherit"></textarea>
+          </div>
+
+          <div>
+            <label style="display:block; font-size:0.85rem; font-weight:600; color:var(--muted); margin-bottom:6px">Yazı İçeriği (HTML / Metin)</label>
+            <div style="display:flex; gap:6px; margin-bottom:8px; flex-wrap:wrap">
+              <button type="button" class="btn btn-ghost" style="padding:4px 10px; font-size:0.8rem" onclick="insertTag('h2')">H2 Başlık</button>
+              <button type="button" class="btn btn-ghost" style="padding:4px 10px; font-size:0.8rem" onclick="insertTag('p')">Paragraf</button>
+              <button type="button" class="btn btn-ghost" style="padding:4px 10px; font-size:0.8rem" onclick="insertTag('strong')">Kalın</button>
+              <button type="button" class="btn btn-ghost" style="padding:4px 10px; font-size:0.8rem" onclick="insertTag('blockquote')">Alıntı</button>
+              <button type="button" class="btn btn-ghost" style="padding:4px 10px; font-size:0.8rem" onclick="insertTag('ul')">Liste</button>
+            </div>
+            <textarea id="post-body" rows="10" placeholder="<p>Yazınızı buraya yazın...</p>" style="width:100%; background:var(--bg-soft); border:1px solid var(--line); color:var(--text); border-radius:10px; padding:14px; font-size:0.95rem; font-family:monospace" oninput="updatePreview()"></textarea>
+          </div>
+
+          <!-- Action buttons -->
+          <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:8px">
+            <button type="button" class="btn btn-primary" onclick="copyPostJSON()">📋 JSON Kopyala</button>
+            <button type="button" class="btn btn-ghost" onclick="downloadDataJSON()">💾 Yazıyı İndir (.json)</button>
+          </div>
+          <div id="publish-status" style="font-size:0.9rem; margin-top:10px; color:#00E676; display:none"></div>
+        </div>
+      </div>
+
+      <!-- Live Preview -->
+      <div style="background:var(--card); border:1px solid var(--line); border-radius:18px; padding:28px">
+        <h3 style="font-size:1.1rem; margin-bottom:14px; color:var(--muted)">Canlı Önizleme</h3>
+        <div style="background:var(--bg); border:1px solid var(--line); border-radius:14px; padding:24px">
+          <span class="blog-tag" id="prev-tag">Kategori</span>
+          <h2 id="prev-title" style="font-size:1.6rem; margin:10px 0 8px; color:var(--text)">Başlık Burada Görünecek</h2>
+          <div id="prev-meta" style="font-size:0.85rem; color:var(--muted-2); margin-bottom:20px; padding-bottom:14px; border-bottom:1px solid var(--line)">Bugün · 4 dk okuma</div>
+          <div id="prev-body" class="post-content" style="color:#d8d8e2; font-size:0.95rem">İçerik önizlemesi buraya yansır...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 2: POSTS LIST -->
+  <div id="tab-posts" style="display:none">
+    <div style="background:var(--card); border:1px solid var(--line); border-radius:18px; padding:28px">
+      <h2 style="font-size:1.35rem; margin-bottom:18px">Yayınlanmış Blog Yazıları</h2>
+      <div style="display:flex; flex-direction:column; gap:14px">
+        
+        <div style="display:flex; justify-content:space-between; align-items:center; background:var(--bg-soft); border:1px solid var(--line); border-radius:12px; padding:16px; flex-wrap:wrap; gap:12px">
+          <div>
+            <span class="blog-tag" style="margin-bottom:6px">Philosophy &amp; Principles</span>
+            <h4 style="margin:4px 0; font-size:1.1rem">Artificial is How It Is Built. Human is Who It Is For.</h4>
+            <div style="font-size:0.82rem; color:var(--muted)">2026-10-30 · 4 min read</div>
+          </div>
+          <div style="display:flex; gap:8px">
+            <a href="../blog/artificial-is-how-it-is-built-human-is-who-it-is-for/" target="_blank" class="btn btn-ghost" style="padding:6px 14px; font-size:0.85rem">Yazıyı Aç ↗</a>
+          </div>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; background:var(--bg-soft); border:1px solid var(--line); border-radius:12px; padding:16px; flex-wrap:wrap; gap:12px">
+          <div>
+            <span class="blog-tag" style="margin-bottom:6px">iOS Engineering</span>
+            <h4 style="margin:4px 0; font-size:1.1rem">FieldReport AI: Hands-Free Inspections with Siri &amp; App Intents</h4>
+            <div style="font-size:0.82rem; color:var(--muted)">2026-10-28 · 5 min read</div>
+          </div>
+          <div style="display:flex; gap:8px">
+            <a href="../blog/fieldreport-ai-siri-app-intents-offline-engineering/" target="_blank" class="btn btn-ghost" style="padding:6px 14px; font-size:0.85rem">Yazıyı Aç ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 3: APPS -->
+  <div id="tab-apps" style="display:none">
+    <div style="background:var(--card); border:1px solid var(--line); border-radius:18px; padding:28px">
+      <h2 style="font-size:1.35rem; margin-bottom:18px">Uygulama Kataloğu</h2>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px">
+        
+        <div style="background:var(--bg-soft); border:1px solid var(--line); border-radius:14px; padding:18px">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px">
+            <img src="../assets/apps/animai-icon.png" width="44" height="44" style="border-radius:10px" alt="AnimAI">
+            <div>
+              <h4 style="margin:0; font-size:1.05rem">AnimAI</h4>
+              <span style="font-size:0.78rem; color:var(--accent)">LIVE</span>
+            </div>
+          </div>
+          <p style="font-size:0.85rem; color:var(--muted); line-height:1.5; margin-bottom:12px">Find out what your pet is really thinking.</p>
+          <a href="https://apps.apple.com/tr/app/animai-ai-pet-scanner-voice/id6763732084" target="_blank" class="btn btn-ghost" style="padding:6px 12px; font-size:0.8rem; width:100%; text-align:center">App Store ↗</a>
+        </div>
+        <div style="background:var(--bg-soft); border:1px solid var(--line); border-radius:14px; padding:18px">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px">
+            <img src="../assets/apps/listbasketai-icon.png" width="44" height="44" style="border-radius:10px" alt="ListBasketAI">
+            <div>
+              <h4 style="margin:0; font-size:1.05rem">ListBasketAI</h4>
+              <span style="font-size:0.78rem; color:var(--accent)">LIVE</span>
+            </div>
+          </div>
+          <p style="font-size:0.85rem; color:var(--muted); line-height:1.5; margin-bottom:12px">The shopping list that thinks ahead.</p>
+          <a href="https://apps.apple.com/tr/app/listbasketai-smart-lists/id6752133457" target="_blank" class="btn btn-ghost" style="padding:6px 12px; font-size:0.8rem; width:100%; text-align:center">App Store ↗</a>
+        </div>
+        <div style="background:var(--bg-soft); border:1px solid var(--line); border-radius:14px; padding:18px">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px">
+            <img src="../assets/apps/postrexai-icon.png" width="44" height="44" style="border-radius:10px" alt="PostRexAI">
+            <div>
+              <h4 style="margin:0; font-size:1.05rem">PostRexAI</h4>
+              <span style="font-size:0.78rem; color:var(--accent)">LIVE</span>
+            </div>
+          </div>
+          <p style="font-size:0.85rem; color:var(--muted); line-height:1.5; margin-bottom:12px">Write on X without staring at the box.</p>
+          <a href="https://apps.apple.com/tr/app/postrexai/id6772724565" target="_blank" class="btn btn-ghost" style="padding:6px 12px; font-size:0.8rem; width:100%; text-align:center">App Store ↗</a>
+        </div>
+        <div style="background:var(--bg-soft); border:1px solid var(--line); border-radius:14px; padding:18px">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px">
+            <img src="../assets/apps/fieldreportai-icon.png" width="44" height="44" style="border-radius:10px" alt="FieldReportAI">
+            <div>
+              <h4 style="margin:0; font-size:1.05rem">FieldReportAI</h4>
+              <span style="font-size:0.78rem; color:var(--accent)">LIVE</span>
+            </div>
+          </div>
+          <p style="font-size:0.85rem; color:var(--muted); line-height:1.5; margin-bottom:12px">Site notes in. Client-ready PDF out.</p>
+          <a href="https://apps.apple.com/tr/app/fieldreport-ai-inspection/id6792279397" target="_blank" class="btn btn-ghost" style="padding:6px 12px; font-size:0.8rem; width:100%; text-align:center">App Store ↗</a>
+        </div>
+        <div style="background:var(--bg-soft); border:1px solid var(--line); border-radius:14px; padding:18px">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px">
+            <img src="../assets/apps/worryhanger-icon.png" width="44" height="44" style="border-radius:10px" alt="WorryHanger">
+            <div>
+              <h4 style="margin:0; font-size:1.05rem">WorryHanger</h4>
+              <span style="font-size:0.78rem; color:var(--accent)">LIVE</span>
+            </div>
+          </div>
+          <p style="font-size:0.85rem; color:var(--muted); line-height:1.5; margin-bottom:12px">Sleep better, worry less.</p>
+          <a href="https://apps.apple.com/tr/app/worryhanger-mind-wardrobe/id6804718541" target="_blank" class="btn btn-ghost" style="padding:6px 12px; font-size:0.8rem; width:100%; text-align:center">App Store ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 4: SETTINGS -->
+  <div id="tab-settings" style="display:none">
+    <div style="background:var(--card); border:1px solid var(--line); border-radius:18px; padding:28px; max-width:680px">
+      <h2 style="font-size:1.35rem; margin-bottom:8px">Yayınlama & Site Bilgileri</h2>
+      <p style="color:var(--muted); font-size:0.9rem; margin-bottom:20px">
+        Site Cloudflare Pages üzerinde <strong>solutionyours.com</strong> adresinde canlıdadır.
+      </p>
+      
+      <div style="display:flex; flex-direction:column; gap:14px">
+        <div>
+          <label style="display:block; font-size:0.85rem; font-weight:600; color:var(--muted); margin-bottom:6px">GitHub Deposu</label>
+          <input type="text" readonly value="https://github.com/solutionyours/solutionyours.github.io" style="width:100%; background:var(--bg-soft); border:1px solid var(--line); color:var(--text); border-radius:10px; padding:12px 14px; font-size:0.95rem">
+        </div>
+        <div>
+          <label style="display:block; font-size:0.85rem; font-weight:600; color:var(--muted); margin-bottom:6px">Canlı Alan Adı</label>
+          <input type="text" readonly value="https://solutionyours.com" style="width:100%; background:var(--bg-soft); border:1px solid var(--line); color:#00E676; border-radius:10px; padding:12px 14px; font-size:0.95rem">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+function switchTab(tab) {
+  ['write', 'posts', 'apps', 'settings'].forEach(t => {
+    const el = document.getElementById('tab-' + t);
+    if (el) el.style.display = (t === tab) ? 'block' : 'none';
+    const btn = document.getElementById('tab-btn-' + t);
+    if (btn) {
+      btn.className = (t === tab) ? 'btn btn-primary' : 'btn btn-ghost';
+    }
+  });
+}
+
+function autoSlug() {
+  const title = document.getElementById('post-title').value;
+  const slug = title.toLowerCase()
+    .replace(/[çÇ]/g, 'c').replace(/[ğĞ]/g, 'g').replace(/[ıİ]/g, 'i')
+    .replace(/[öÖ]/g, 'o').replace(/[şŞ]/g, 's').replace(/[üÜ]/g, 'u')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+  document.getElementById('post-slug').value = slug;
+  updatePreview();
+}
+
+function insertTag(tag) {
+  const textarea = document.getElementById('post-body');
+  const start = textarea.selectionStart;
+  const end = textarea.selectionEnd;
+  const sel = textarea.value.substring(start, end) || 'metin';
+  let replacement = '';
+  if (tag === 'ul') {
+    replacement = '<ul>
+  <li>Madde 1</li>
+  <li>Madde 2</li>
+</ul>';
+  } else {
+    replacement = '<' + tag + '>' + sel + '</' + tag + '>';
+  }
+  textarea.value = textarea.value.substring(0, start) + replacement + textarea.value.substring(end);
+  updatePreview();
+}
+
+function updatePreview() {
+  const title = document.getElementById('post-title').value || 'Başlık Burada Görünecek';
+  const tag = document.getElementById('post-tag').value || 'Kategori';
+  const time = document.getElementById('post-time').value || '4 dk okuma';
+  const body = document.getElementById('post-body').value || 'İçerik önizlemesi buraya yansır...';
+
+  document.getElementById('prev-title').textContent = title;
+  document.getElementById('prev-tag').textContent = tag;
+  document.getElementById('prev-meta').textContent = 'Bugün · ' + time;
+  document.getElementById('prev-body').innerHTML = body;
+}
+
+function getPostObject() {
+  return {
+    slug: document.getElementById('post-slug').value || 'yeni-yazi',
+    title: document.getElementById('post-title').value,
+    date: new Date().toISOString().split('T')[0],
+    tag: document.getElementById('post-tag').value || 'Genel',
+    read_time: document.getElementById('post-time').value || '3 dk okuma',
+    excerpt: document.getElementById('post-excerpt').value || '',
+    body_html: document.getElementById('post-body').value || ''
+  };
+}
+
+function copyPostJSON() {
+  const post = getPostObject();
+  navigator.clipboard.writeText(JSON.stringify(post, null, 2));
+  const st = document.getElementById('publish-status');
+  st.style.display = 'block';
+  st.textContent = '✓ Yazı JSON formatında panoya kopyalandı!';
+}
+
+function downloadDataJSON() {
+  const post = getPostObject();
+  const blob = new Blob([JSON.stringify(post, null, 2)], {type: 'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = (post.slug || 'yazi') + '.json';
+  a.click();
+}
+</script>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div style="max-width:34ch">
+        <a class="brand" href="../" style="margin-bottom:12px"><svg width="26" height="26" viewBox="0 0 26 26" role="img" aria-label="SolutionYours">
+<rect x="0.5" y="0.5" width="25" height="25" rx="7.5" fill="#14141b" stroke="#262631"/>
+<circle cx="10.6" cy="13" r="4.5" fill="#ff8a3d"/>
+<circle cx="16.4" cy="13" r="4.5" fill="none" stroke="#f3f2ee" stroke-width="1.5" opacity="0.92"/>
+</svg><span>SolutionYours</span></a>
+        <p class="small" style="margin-top:14px">AI does the work. Humans do the caring.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h4>Apps</h4>
+          <a href="../apps/animai/">AnimAI</a><a href="../apps/listbasketai/">ListBasketAI</a><a href="../apps/postrexai/">PostRexAI</a><a href="../apps/fieldreportai/">FieldReportAI</a><a href="../apps/worryhanger/">WorryHanger</a>
+        </div>
+        <div class="foot-col">
+          <h4>Studio</h4>
+                    <a href="../blog/">Blog</a>
+          <a href="../about/">About</a>
+          <a href="mailto:solutionyoursgroup@gmail.com">Contact</a>
+        </div>
+        <div class="foot-col">
+          <h4>Connect</h4>
+          <a href="https://x.com/sy_sdy" target="_blank" rel="noopener">X (Twitter)</a>
+          <a href="https://tiktok.com/@solutionyours" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://instagram.com/solution_yours" target="_blank" rel="noopener">Instagram</a>
+          <a href="mailto:solutionyoursgroup@gmail.com">Email</a>
+        </div>
+        <div class="foot-col">
+          <h4>Legal</h4>
+          <a href="../legal/privacy/">Privacy</a>
+          <a href="../legal/terms/">Terms</a>
+          <a href="../legal/support/">Support</a>
+          <a href="../legal/data-deletion/">Data deletion</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 SolutionYoursGroup</span>
+      <span>Written, built and shipped by one human.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/main.js" defer></script>
+</body>
+</html>
