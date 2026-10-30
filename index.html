@@ -3,9 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SolutionYours — Solo Indie iOS Developer</title>
-    <meta name="description" content="Official portfolio of SolutionYours. Building innovative, AI-powered iOS mobile apps as a solo developer.">
+    <title>SolutionYours — Solo Indie iOS Developer | Human Intelligent AI Apps</title>
+    <meta name="description" content="Official portfolio of SolutionYours. Building innovative, honest, AI-powered iOS mobile apps as a solo developer.">
     
+    <!-- OpenGraph / Meta -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="SolutionYours — AI does the work. Humans do the caring.">
+    <meta property="og:description" content="SolutionYours builds honest, AI-powered iOS apps for everyday life. Human intelligent, artificially assisted.">
+    <meta property="og:url" content="https://solutionyours.com/">
+    <meta name="theme-color" content="#070A14">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,150 +21,265 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="background-glow bg-glow-1"></div>
-    <div class="background-glow bg-glow-2"></div>
     <canvas id="stars"></canvas>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
 
-    <div class="container">
-        <!-- Profile Header -->
-        <header class="profile">
-            <div class="avatar-wrapper">
-                <img id="logo-img" src="logo.png" alt="SolutionYours Logo" class="avatar-img"
-                     onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex'">
-                <div id="logo-fallback" class="logo-fallback">SY</div>
+    <!-- Top Navigation -->
+    <nav class="nav">
+        <a href="index.html" class="nav-brand">
+            <img src="logo.png" alt="SolutionYours Logo" class="nav-logo">
+            <span class="nav-name">SolutionYours</span>
+        </a>
+        <div class="nav-links" id="nav-links">
+            <a href="#apps">Apps</a>
+            <a href="#philosophy">Philosophy</a>
+            <a href="blog.html">Blog</a>
+            <a href="#services">Services</a>
+            <a href="mailto:solutionyoursgroup@gmail.com" class="nav-cta">Contact</a>
+        </div>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="page">
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="hero-avatar">
+                <img id="logo-img" src="logo.png" alt="SolutionYours Logo">
                 <div class="pulse-ring"></div>
             </div>
+
+            <div class="hero-badge" id="brand-badge">🚀 100% Solo Projects</div>
             
-            <h1 class="brand-title" id="brand-name"></h1>
-            <p class="brand-role" id="brand-role"></p>
-            <div class="badge" id="brand-badge"></div>
+            <h1 id="brand-headline">AI does the work.<br>Humans do the caring.</h1>
+            <p class="hero-role" id="brand-role">Solo Indie iOS Developer</p>
             
-            <!-- Solo Dev Bio Box -->
-            <div class="bio-box">
-                <p id="brand-bio"></p>
+            <div class="hero-bio">
+                <p id="brand-bio">
+                    Building honest, small AI apps for everyday life — your pet, your shopping list, your job site, your writing. No dark patterns, no data farming. Just tools crafted with care.
+                </p>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat">
+                    <b>5+</b>
+                    <span>App Store Apps</span>
+                </div>
+                <div class="stat">
+                    <b>20+</b>
+                    <span>Languages</span>
+                </div>
+                <div class="stat">
+                    <b>1</b>
+                    <span>Solo Developer</span>
+                </div>
+            </div>
+
+            <div class="hero-btns">
+                <a href="#apps" class="btn-primary">Explore Apps ↓</a>
+                <a href="blog.html" class="btn-ghost">Read Blog ✍️</a>
             </div>
         </header>
 
-        <!-- Apps Grid Section -->
-        <section class="section-container">
-            <h2 class="section-title">My Apps</h2>
-            <div class="apps-grid" id="apps-container"></div>
-        </section>
+        <div class="divider"></div>
 
-        <!-- Custom Solutions / Hire Me Box -->
-        <section class="section-container">
-            <h2 class="section-title">Services</h2>
-            <div class="custom-solutions-card" id="solutions-card">
-                <div class="solutions-content">
-                    <h3 id="solutions-title" class="solutions-title"></h3>
-                    <p id="solutions-desc" class="solutions-desc"></p>
+        <!-- Human Intelligent Philosophy Section (Integrated from previous concept) -->
+        <section class="section" id="philosophy">
+            <div class="section-head">
+                <p class="section-label">The Idea</p>
+                <h2 class="section-title">Human <span>Intelligent</span></h2>
+                <p class="section-sub">Artificial is how it is built. Human is who it is for.</p>
+            </div>
+
+            <div class="hi-band">
+                <div>
+                    <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 12px;">Tools that help a person think and finish things.</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-2); line-height: 1.6; margin-bottom: 20px;">
+                        Everyone is racing to make machines that think. We are interested in something smaller and more sincere: tools that give you back time, protect your focus, and make you smile.
+                    </p>
+                    <a href="blog.html" class="btn-ghost" style="font-size: 0.85rem; padding: 10px 20px;">Read More on Blog →</a>
                 </div>
-                <a id="solutions-btn" class="solutions-btn" href=""></a>
+                <div class="hi-callout">
+                    <strong style="font-size: 1.05rem; display: block; margin-bottom: 6px;">human intelligent</strong>
+                    <em>(adj.)</em><br><br>
+                    Using artificial intelligence on purpose, in service of an actual human life. The tool is artificial. The human purpose is not.
+                </div>
             </div>
         </section>
 
-        <!-- Social Media Footer Connections -->
-        <section class="section-container">
-            <h2 class="section-title">Connect With Me</h2>
-            <div class="social-row" id="socials-container"></div>
+        <!-- Apps Grid Section -->
+        <section class="section" id="apps">
+            <div class="section-head">
+                <p class="section-label">Portfolio</p>
+                <h2 class="section-title">My <span>Apps</span></h2>
+                <p class="section-sub">Native iOS applications available on the App Store or currently on the workbench.</p>
+            </div>
+            
+            <div class="apps-grid" id="apps-container"></div>
+        </section>
+
+        <!-- Latest from Blog Section -->
+        <section class="section" id="blog-preview">
+            <div class="section-head">
+                <p class="section-label">Insights</p>
+                <h2 class="section-title">From the <span>Blog</span></h2>
+                <p class="section-sub">Reflections on iOS development, Siri App Intents, and building solo.</p>
+            </div>
+
+            <div class="blog-grid" id="blog-preview-container"></div>
+
+            <div style="text-align: center; margin-top: 28px;">
+                <a href="blog.html" class="btn-ghost">View All Posts →</a>
+            </div>
+        </section>
+
+        <!-- Custom Solutions / Hire Me Box -->
+        <section class="section" id="services">
+            <div class="section-head">
+                <p class="section-label">Collaboration</p>
+                <h2 class="section-title">Custom <span>Services</span></h2>
+                <p class="section-sub">Need high-performance iOS software or bespoke AI integrations?</p>
+            </div>
+
+            <div class="services-card">
+                <div>
+                    <h3 id="solutions-title">Looking for Custom Mobile & AI Solutions?</h3>
+                    <p id="solutions-desc">
+                        Need a custom mobile app, Vision/CloudKit integration, or an end-to-end iOS application? I take on select freelance projects with focused delivery.
+                    </p>
+                </div>
+                <a id="solutions-btn" class="btn-primary" href="mailto:solutionyoursgroup@gmail.com?subject=Custom%20Software%20Inquiry%20-%20SolutionYours">Get in Touch ✉️</a>
+            </div>
+        </section>
+
+        <!-- Social Connections -->
+        <section class="section">
+            <div class="section-head">
+                <p class="section-label">Social</p>
+                <h2 class="section-title">Connect <span>With Me</span></h2>
+            </div>
+            <div class="social-grid" id="socials-container"></div>
         </section>
 
         <!-- Footer -->
-        <footer class="footer">
-            <p>© 2026 SolutionYours • Crafted solo with passion.</p>
+        <footer class="site-footer">
+            <a href="index.html" class="footer-logo">
+                <img src="logo.png" alt="SolutionYours Logo">
+                <span>SolutionYours</span>
+            </a>
+            <div class="footer-links">
+                <a href="#apps">Apps</a>
+                <a href="blog.html">Blog</a>
+                <a href="#services">Services</a>
+                <!-- Existing Google Sites kept exactly as requested -->
+                <a href="https://sites.google.com/view/solutionyoursgroup/ana-sayfa" target="_blank" rel="noopener">Privacy Policy</a>
+                <a href="https://sites.google.com/view/solutionyoursgroup/ana-sayfa" target="_blank" rel="noopener">Support</a>
+            </div>
+            <p class="footer-copy">© 2026 SolutionYours • Written, designed, and shipped solo.</p>
         </footer>
     </div>
 
+    <!-- Scripts -->
     <script src="links.js"></script>
+    <script src="posts.js"></script>
     <script>
-        // Load configurations
-        document.getElementById('brand-name').textContent = CONFIG.developerName;
-        document.getElementById('brand-role').textContent = CONFIG.role;
-        document.getElementById('brand-badge').textContent = CONFIG.badge;
-        document.getElementById('brand-bio').textContent = CONFIG.bio;
-        document.getElementById('logo-img').src = CONFIG.logo;
+        // Mobile Nav Toggle
+        const toggleBtn = document.getElementById('nav-toggle');
+        const navLinks = document.getElementById('nav-links');
+        toggleBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
 
-        // Custom Solutions
-        document.getElementById('solutions-title').textContent = CONFIG.customSolutions.title;
-        document.getElementById('solutions-desc').textContent = CONFIG.customSolutions.description;
-        const solBtn = document.getElementById('solutions-btn');
-        solBtn.textContent = CONFIG.customSolutions.buttonText;
-        solBtn.href = `mailto:${CONFIG.email}?subject=Custom%20Software%20Inquiry%20-%20SolutionYours`;
+        // Load Header Details from Config if exists
+        if (typeof CONFIG !== 'undefined') {
+            if (CONFIG.badge) document.getElementById('brand-badge').textContent = CONFIG.badge;
+            if (CONFIG.role) document.getElementById('brand-role').textContent = CONFIG.role;
+            if (CONFIG.bio) document.getElementById('brand-bio').textContent = CONFIG.bio;
 
-        // Render Apps
-        const appsContainer = document.getElementById('apps-container');
-        CONFIG.apps.forEach(app => {
-            const card = document.createElement(app.isLive ? 'a' : 'div');
-            if (app.isLive) {
-                card.href = app.url;
-                card.target = '_blank';
-                card.rel = 'noopener';
-            }
-            card.className = 'app-card' + (app.isLive ? ' live' : ' dev');
+            // Render Apps
+            const appsContainer = document.getElementById('apps-container');
+            CONFIG.apps.forEach(app => {
+                const card = document.createElement(app.isLive ? 'a' : 'div');
+                if (app.isLive) {
+                    card.href = app.url;
+                    card.target = '_blank';
+                    card.rel = 'noopener';
+                }
+                card.className = 'app-card' + (app.isLive ? ' live' : ' dev');
+                const badgeClass = app.isLive ? 'badge-live' : 'badge-dev';
+
+                card.innerHTML = `
+                    <div class="app-card-header">
+                        <span class="app-icon">${app.icon}</span>
+                        <span class="app-badge ${badgeClass}">${app.status}</span>
+                    </div>
+                    <h3 class="app-name">${app.title}</h3>
+                    <span class="app-sub">${app.subtitle}</span>
+                    <p class="app-desc">${app.description}</p>
+                    ${app.isLive ? '<div class="app-action">View on App Store →</div>' : ''}
+                `;
+                appsContainer.appendChild(card);
+            });
+
+            // Render Socials
+            const socialsContainer = document.getElementById('socials-container');
             
-            const badgeClass = app.isLive ? 'status-live' : 'status-dev';
-            
-            card.innerHTML = `
-                <div class="app-card-header">
-                    <span class="app-icon">${app.icon}</span>
-                    <span class="app-status-badge ${badgeClass}">${app.status}</span>
-                </div>
-                <h3 class="app-title">${app.title}</h3>
-                <span class="app-subtitle">${app.subtitle}</span>
-                <p class="app-description">${app.description}</p>
-                ${app.isLive ? '<div class="app-action">View on App Store →</div>' : ''}
-            `;
-            appsContainer.appendChild(card);
-        });
+            // Mail button
+            const mailBtn = document.createElement('a');
+            mailBtn.href = `mailto:${CONFIG.email}`;
+            mailBtn.className = 'social-btn';
+            mailBtn.innerHTML = `<span class="social-icon">✉️</span><span>Email</span>`;
+            socialsContainer.appendChild(mailBtn);
 
-        // Render Socials + Email
-        const socialsContainer = document.getElementById('socials-container');
-        
-        // Add direct Email button
-        const mailA = document.createElement('a');
-        mailA.href = `mailto:${CONFIG.email}`;
-        mailA.className = 'social-btn mail-btn';
-        mailA.innerHTML = `
-            <span class="social-icon">✉️</span>
-            <span class="social-name">Email</span>
-        `;
-        socialsContainer.appendChild(mailA);
+            CONFIG.socials.forEach(item => {
+                const a = document.createElement('a');
+                a.href = item.url;
+                a.target = '_blank';
+                a.rel = 'noopener';
+                a.className = 'social-btn';
+                a.innerHTML = `<span class="social-icon">${item.icon}</span><span>${item.platform}</span>`;
+                socialsContainer.appendChild(a);
+            });
+        }
 
-        CONFIG.socials.forEach(social => {
-            const a = document.createElement('a');
-            a.href = social.url;
-            a.target = '_blank';
-            a.rel = 'noopener';
-            a.className = 'social-btn';
-            a.innerHTML = `
-                <span class="social-icon">${social.icon}</span>
-                <span class="social-name">${social.platform}</span>
-            `;
-            socialsContainer.appendChild(a);
-        });
+        // Render Blog Previews
+        if (typeof BLOG_POSTS !== 'undefined') {
+            const blogContainer = document.getElementById('blog-preview-container');
+            BLOG_POSTS.slice(0, 2).forEach(post => {
+                const card = document.createElement('a');
+                card.href = 'blog.html';
+                card.className = 'blog-card';
+                card.innerHTML = `
+                    <div>
+                        <span class="blog-tag">${post.tag}</span>
+                        <h3 class="blog-title">${post.title}</h3>
+                        <p class="blog-excerpt">${post.excerpt}</p>
+                    </div>
+                    <div>
+                        <div class="blog-meta">${post.date} • ${post.readTime}</div>
+                        <div class="blog-arrow">Read Article →</div>
+                    </div>
+                `;
+                blogContainer.appendChild(card);
+            });
+        }
 
-        // Star animation
+        // Canvas Stars Animation
         const canvas = document.getElementById('stars');
         const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        canvas.style.position = 'fixed';
-        canvas.style.top = '0';
-        canvas.style.left = '0';
-        canvas.style.zIndex = '0';
-        canvas.style.pointerEvents = 'none';
-
-        window.addEventListener('resize', () => {
+        function resize() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-        });
+        }
+        window.addEventListener('resize', resize);
+        resize();
 
-        const stars = Array.from({ length: 60 }, () => ({
+        const stars = Array.from({ length: 65 }, () => ({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
             r: Math.random() * 1.5 + 0.5,
             o: Math.random(),
-            s: Math.random() * 0.005 + 0.002
+            s: Math.random() * 0.006 + 0.002
         }));
 
         function drawStars() {
@@ -167,7 +289,7 @@
                 if (star.o > 1 || star.o < 0) star.s *= -1;
                 ctx.beginPath();
                 ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(140, 180, 255, ${star.o * 0.6})`;
+                ctx.fillStyle = `rgba(255, 170, 90, ${star.o * 0.55})`;
                 ctx.fill();
             });
             requestAnimationFrame(drawStars);

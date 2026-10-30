@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — SolutionYours</title>
+    <meta name="description" content="SolutionYours Blog — Indie iOS geliştirme, yapay zeka deneyimleri ve Human Intelligent yaklaşımı üzerine yazılar.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="stars"></canvas>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="index.html" class="nav-brand">
+            <img src="logo.png" alt="SolutionYours Logo" class="nav-logo">
+            <span class="nav-name">SolutionYours</span>
+        </a>
+        <div class="nav-links" id="nav-links">
+            <a href="index.html">Ana Sayfa</a>
+            <a href="index.html#apps">Uygulamalar</a>
+            <a href="blog.html" class="active">Blog</a>
+            <a href="index.html#services">Hizmetler</a>
+            <a href="mailto:solutionyoursgroup@gmail.com" class="nav-cta">İletişim</a>
+        </div>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Menü">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="page">
+        <main class="section">
+            <div class="section-head">
+                <p class="section-label">Yazılar & Düşünceler</p>
+                <h1 class="section-title">SolutionYours <span>Blog</span></h1>
+                <p class="section-sub">iOS geliştirme, yapay zeka ürünleri, bağımsız yazılımcılık ve Human Intelligent felsefesi üzerine notlar.</p>
+            </div>
+
+            <div class="blog-grid" id="blog-container"></div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <a href="index.html" class="footer-logo">
+                <img src="logo.png" alt="SolutionYours Logo">
+                <span>SolutionYours</span>
+            </a>
+            <div class="footer-links">
+                <a href="index.html">Ana Sayfa</a>
+                <a href="index.html#apps">Uygulamalar</a>
+                <a href="blog.html">Blog</a>
+                <a href="https://sites.google.com/view/solutionyoursgroup/ana-sayfa" target="_blank" rel="noopener">Gizlilik & Destek</a>
+            </div>
+            <p class="footer-copy">© 2026 SolutionYours • Solo Indie iOS Developer</p>
+        </footer>
+    </div>
+
+    <!-- Post Modal / Viewer -->
+    <div id="post-modal" style="display:none; position:fixed; inset:0; z-index:200; background:rgba(7,10,20,0.92); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); overflow-y:auto; padding:40px 20px;">
+        <div style="max-width:720px; margin:40px auto; background:var(--card-bg); border:1px solid var(--card-border); border-radius:24px; padding:36px; position:relative; box-shadow:0 20px 50px rgba(0,0,0,0.6);">
+            <button onclick="closeModal()" style="position:absolute; top:20px; right:20px; background:rgba(255,138,61,0.1); border:1px solid rgba(255,138,61,0.3); color:var(--text); width:36px; height:36px; border-radius:50%; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center;">✕</button>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <script src="posts.js"></script>
+    <script>
+        // Hamburger toggle
+        const toggleBtn = document.getElementById('nav-toggle');
+        const navLinks = document.getElementById('nav-links');
+        toggleBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+
+        // Render Posts
+        const container = document.getElementById('blog-container');
+        BLOG_POSTS.forEach((post, idx) => {
+            const card = document.createElement('div');
+            card.className = 'blog-card';
+            card.style.cursor = 'pointer';
+            card.innerHTML = `
+                <div>
+                    <span class="blog-tag">${post.tag}</span>
+                    <h2 class="blog-title">${post.title}</h2>
+                    <p class="blog-excerpt">${post.excerpt}</p>
+                </div>
+                <div>
+                    <div class="blog-meta">${post.date} • ${post.readTime} okuma</div>
+                    <div class="blog-arrow">Yazıyı Oku →</div>
+                </div>
+            `;
+            card.onclick = () => openPost(idx);
+            container.appendChild(card);
+        });
+
+        function openPost(idx) {
+            const post = BLOG_POSTS[idx];
+            const modal = document.getElementById('post-modal');
+            const content = document.getElementById('modal-content');
+            content.innerHTML = `
+                <div class="post-wrap" style="padding:0;">
+                    <div class="post-header">
+                        <span class="blog-tag">${post.tag}</span>
+                        <h1>${post.title}</h1>
+                        <div class="post-meta">${post.date} • ${post.readTime} okuma</div>
+                    </div>
+                    <div class="post-body">
+                        ${post.content}
+                    </div>
+                </div>
+            `;
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('post-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close on ESC
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Background Star Animation
+        const canvas = document.getElementById('stars');
+        const ctx = canvas.getContext('2d');
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        const stars = Array.from({ length: 65 }, () => ({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            r: Math.random() * 1.5 + 0.5,
+            o: Math.random(),
+            s: Math.random() * 0.006 + 0.002
+        }));
+
+        function drawStars() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            stars.forEach(star => {
+                star.o += star.s;
+                if (star.o > 1 || star.o < 0) star.s *= -1;
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 170, 90, ${star.o * 0.55})`;
+                ctx.fill();
+            });
+            requestAnimationFrame(drawStars);
+        }
+        drawStars();
+    </script>
+</body>
+</html>
